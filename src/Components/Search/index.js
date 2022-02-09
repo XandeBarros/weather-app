@@ -14,7 +14,7 @@ export default function Search({ place, handleFetch, handleSearch }) {
     return () => {
       document.removeEventListener("keydown", listener);
     };
-  }, []);
+  });
 
   return(
     <Container>
