@@ -22,7 +22,7 @@ export default function App() {
   }
 
   function handleFetch() {
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${place}&days=1&aqi=no&alerts=no`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.API_KEY}&q=${place}&days=1&aqi=no&alerts=no`)
     .then(response => response.json())
     .then(data => 
       setPlaceInfo({
