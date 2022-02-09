@@ -4,6 +4,8 @@ import { Title } from './styles.js';
 
 export default function Header() {
   return(
-    <Title>Weather App</Title>  
+    <header>
+      <Title>Xande | Weather App</Title>  
+    </header>
   );
 }
