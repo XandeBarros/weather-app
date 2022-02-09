@@ -7,12 +7,18 @@ export const Container = styled.div`
   flex-direction: column;
 
   padding:  ${({ theme }) => theme.spacing.medium};
-  width: 90vw;
-  height: 80vh;  
+  width: 35vw;
+  min-width: 25rem;
+  height: 90vh;  
 
   border-radius:  ${({ theme }) => theme.borderRadius};
 
-  background: rgba(125, 125,125, .5);
+  background: rgba(255, 255, 255, .5);
 
   font-size: 1rem;
+
+  @media(max-width: 500px) {
+    width: 80vw;
+    height: 90vh;
+  }
 `;
