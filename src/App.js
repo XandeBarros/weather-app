@@ -9,6 +9,7 @@ import Header from './Components/Header';
 import Search from './Components/Search';
 import Subtitle from './Components/Subtitle';
 import FetchedData from './Components/FetchedData';
+import Footer from './Components/Footer';
 
 import { Container } from './Helpers/Container/styles.js';
 
@@ -21,7 +22,7 @@ export default function App() {
   }
 
   function handleFetch() {
-    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${place}&days=1&aqi=no&alerts=no`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=bda4b19f3ef241e5813194355220702&q=${place}&days=1&aqi=no&alerts=no`)
     .then(response => response.json())
     .then(data => 
       setPlaceInfo({
@@ -36,6 +37,7 @@ export default function App() {
           uv: data.current.uv,
           condition: data.current.condition.text,
           conditionCode: data.current.condition.code, 
+          conditionIcon: data.current.condition.icon, 
         },
         forecast: {
           max_temp: data.forecast.forecastday[0].day.maxtemp_c,
@@ -48,7 +50,7 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={{...themes, code: Object.keys(placeInfo).length === 0 ? '0000' : placeInfo.current.conditionCode }}>
+    <ThemeProvider theme={{...themes, code: Object.keys(placeInfo).length === 0 ? '0000' : placeInfo.current.conditionCode, icon: Object.keys(placeInfo).length === 0 ? null : placeInfo.current.conditionIcon.replace('64x64', '128x128')}}>
       <GlobalStyle />
       <Container>
         <Header />
@@ -59,6 +61,7 @@ export default function App() {
           : 
           <FetchedData placeInfo={placeInfo} />
         }
+        <Footer />
       </Container>
     </ThemeProvider>
   );
